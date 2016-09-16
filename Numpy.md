@@ -436,6 +436,78 @@ print(np_baseball[123,0])
 
 
 ##2D Arithmetic
+Remember how you calculated the Body Mass Index for all baseball players? Numpy was able to perform all calculations element-wise. For 2D Numpy arrays this isn't any different! You can combine matrices with single numbers, with vectors, and with other matrices.
+
+Execute the code below in the IPython shell and see if you understand:
+```
+import numpy as np
+np_mat = np.array([[1, 2],
+                   [3, 4],
+                   [5, 6]])
+np_mat * 2
+np_mat + np.array([10, 10])
+np_mat + np_mat
+```
+np_baseball is coded for you; it's again a 2D Numpy array with 3 columns representing height, weight and age.
+###Instructions
+You managed to get hold on the changes in weight, height and age of all baseball players. It is available as a 2D Numpy array, update. Add np_baseball and update and print out the result.
+You want to convert the units of height and weight. As a first step, create a Numpy array with three values: 0.0254, 0.453592 and 1. Name this array conversion.
+Multiply np_baseball with conversion and print out the result.
+###Solution
+```
+# baseball is available as a regular list of lists
+# update is available as 2D Numpy array
+
+# Import numpy package
+import numpy as np
+
+# Create np_baseball (3 cols)
+np_baseball = np.array(baseball)
+
+# Print out addition of np_baseball and update
+print(np_baseball + update)
+
+
+# Create Numpy array: conversion
+conversion = ([0.0254, 0.453592, 1])
+
+
+# Print out product of np_baseball and conversion
+print(np_baseball * conversion)
+
+<script.py> output:
+    [[  75.2303559   168.83775102   23.99      ]
+     [  75.02614252  231.09732309   35.69      ]
+     [  73.1544228   215.08167641   31.78      ]
+     ..., 
+     [  76.09349925  209.23890778   26.19      ]
+     [  75.82285669  172.21799965   32.01      ]
+     [  73.99484223  203.14402711   28.92      ]]
+    [[  74.0254    180.453592   23.99    ]
+     [  74.0254    215.453592   35.69    ]
+     [  72.0254    210.453592   31.78    ]
+     ..., 
+     [  75.0254    205.453592   26.19    ]
+     [  75.0254    190.453592   32.01    ]
+     [  73.0254    195.453592   28.92    ]]
+
+<script.py> output:
+    [[  75.2303559   168.83775102   23.99      ]
+     [  75.02614252  231.09732309   35.69      ]
+     [  73.1544228   215.08167641   31.78      ]
+     ..., 
+     [  76.09349925  209.23890778   26.19      ]
+     [  75.82285669  172.21799965   32.01      ]
+     [  73.99484223  203.14402711   28.92      ]]
+    [[  1.8796   81.64656  22.99   ]
+     [  1.8796   97.52228  34.69   ]
+     [  1.8288   95.25432  30.78   ]
+     ..., 
+     [  1.905    92.98636  25.19   ]
+     [  1.905    86.18248  31.01   ]
+     [  1.8542   88.45044  27.92   ]]
+```
+
 ##Numpy:Basic statistics
 ##Average versus median
 ##Explore the baseball datas
