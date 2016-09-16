@@ -8,8 +8,11 @@ my_inv([[1,2], [3,4]])
 Which import statement will you need in order to run the above code without an error?
 
 A.import scipy 1
+
 B.import scipy.linalg 2
+
 C.from scipy.linalg import my_inv 3
+
 D.from scipy.linalg import inv as my_inv 4
 
 Ans:D
