@@ -152,9 +152,161 @@ europe["poland"] = 'warsaw'
 print(europe)
 ```
 ##Dictionary Manipulation(2)
+Somebody thought it would be funny to mess with your accurately generated dictionary. An adapted version of the europe dictionary is available in the script on the right.
+
+Can you clean up? Do not do this by adapting the definition of europe, but by adding Python commands to the script to update and remove key:value pairs.
+###Instructions
+The capital of Germany is not 'bonn'; it's 'berlin'. Update its value.
+Australia is not in Europe, Austria is! Remove they key 'australia' from europe.
+Print out europe to see if your cleaning work paid off.
+###Solution
+```
+# Definition of dictionary
+europe = {'spain':'madrid', 'france':'paris', 'germany':'bonn', 
+          'norway':'oslo', 'italy':'rome', 'poland':'warsaw', 
+          'australia':'vienna' }
+
+# Update capital of germany
+europe["germany"] = 'berlin'
+
+# Remove australia
+del(europe["australia"])
+
+# Print europe
+print(europe)
+
+<script.py> output:
+    {'france': 'paris', 'italy': 'rome', 'poland': 'warsaw', 'norway': 'oslo', 'spain': 'madrid', 'germany': 'berlin'}
+```
 ##Dictionariception
+Remember lists? They could contain anything, even other lists. Well, for dictionaries the same holds. Dictionaries can contain key:value pairs where the values are again dictionaries.
+
+As an example, have a look at the script where another version of europe - the dictionary you've been working with all along - is coded. The keys are still the country names, but the values are dictionaries that contain more information than just the capital.
+
+It's perfectly possible to chain square brackets to select elements. To fetch the population for spain from europe, for example, you need:
+```
+europe['spain']['population']
+```
+###Instructions
+Use chained square brackets to select and print out the capital of France.
+Create a dictionary, named data, with the keys capital and population. Set them to 'rome' and 59.83, respectively.
+Add a new key-value pair to europe: the key is 'italy' and the value is data, the dictionary you just built.
+###Solution
+```
+# Dictionary of dictionaries
+europe = { 'spain': { 'capital':'madrid', 'population':46.77 },
+           'france': { 'capital':'paris', 'population':66.03 },
+           'germany': { 'capital':'berlin', 'population':80.62 },
+           'norway': { 'capital':'oslo', 'population':5.084 } }
+           
+           
+# Print out the capital of France
+print(europe['france']['capital'])
+
+# Create sub-dictionary data
+data = {'capital': 'rome', 'population': 59.83}
+
+
+# Add data to europe under key 'italy'
+europe["italy"] = data
+
+# Print europe
+print(europe)
+
+<script.py> output:
+    paris
+    {'italy': {'population': 59.83, 'capital': 'rome'}, 'france': {'population': 66.03, 'capital': 'paris'}, 'germany': {'population': 80.62, 'capital': 'berlin'}, 'spain': {'population': 46.77, 'capital': 'madrid'}, 'norway': {'population': 5.084, 'capital': 'oslo'}}
+```
 ##Pandas,Part1
+###Tabular dataset examples
+file:///Users/Hsia/Desktop/Screen%20Shot%202016-09-16%20at%2013.39.46.png
+row = observations
+column = variable
+file:///Users/Hsia/Desktop/Screen%20Shot%202016-09-16%20at%2013.41.22.png
+###Datasets in Python
+2D Numpy array
+one data type
+country --> str
+capital --> str
+area --> float
+population --> float
+Pandas!
+High level data manipulation tool
+Wes McKinney
+Built on Numpy
+DataFrame
+###DataFrame
+columns with different types
+###DataFrame form Dictionary
+```
+dict = {"country":["Brazil", "Russia",...]}
+key(column labels)
+values(data, column by column)
+import pandas as pd
+brics = pd.DataFrame(dict)
+```
+###DataFrame from Dictionary(2)
+```
+##change name of items
+brics.index = ["BR", "RU",...,"SA"]
+brics
+```
+###DataFrame from CSV file
+```
+CSV = comma-separated values
+brics = pd.read_csv("path/to/brics.csv")
+##change first column to item names
+brics = pd.read_csv("path/to/brics.csv", index_col = 0)
+```
 ##Dictionary to DataFrame(1)
+Pandas is an open source library, providing high-performance, easy-to-use data structures and data analysis tools for Python. Sounds promising!
+
+The DataFrame is one of Pandas' most important data structures. It's basically a way to store tabular data, where you can label the rows and the columns. One way to build a DataFrame is from a dictionary.
+
+In the exercises that follow you will be working with vehicle data in different countries. Each observation corresponds to a country and the columns give information about the number of vehicles per capita, whether people drive left or right, and so on.
+
+Three lists are defined in the script: - names, containing the country names for which data is available. - dr, a list with booleans that tells whether people drive left or right in the corresponding country. - cpc, the number of motor vehicles per 1000 people in the corresponding country.
+
+Each dictionary key is a column label and each value is a list which contains the column elements.
+###Instructions
+Import pandas as pd.
+Use the pre-defined lists to create dictionary, called my_dict. There should be three key value pairs:
+key 'country' and value names.
+key 'drives_right' and value dr.
+key 'cars_per_cap' and value cpc.
+Use pd.DataFrame() to turn your dict into a DataFrame called cars.
+Print out cars and see how beautiful it is.
+###Solution
+```
+# Pre-defined lists
+names = ['United States', 'Australia', 'Japan', 'India', 'Russia', 'Morocco', 'Egypt']
+dr =  [True, False, False, False, True, True, True]
+cpc = [809, 731, 588, 18, 200, 70, 45]
+
+# Import pandas as pd
+import pandas as pd
+
+
+# Create dictionary my_dict with three key:value pairs: my_dict
+my_dict = {'country': names, 'drives_right': dr, 'cars_per_cap': cpc}
+
+
+
+# Build a DataFrame cars from my_dict: cars
+cars = pd.DataFrame(my_dict)
+
+# Print cars
+print(cars)
+<script.py> output:
+       cars_per_cap        country drives_right
+    0           809  United States         True
+    1           731      Australia        False
+    2           588          Japan        False
+    3            18          India        False
+    4           200         Russia         True
+    5            70        Morocco         True
+    6            45          Egypt         True
+```
 ##Dictionary to DataFrame(2)
 ##CSV to DataFrame(1)
 ##CSV to DataFrame(2)
