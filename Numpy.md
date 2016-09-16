@@ -81,6 +81,34 @@ array([24.747])
 ```
 
 ##Your first Numpy array
+In this chapter, we're going to dive into the world of baseball. Along the way, you'll get comfortable with the basics of Numpy, a powerful package to do data science.
+
+A list baseball has already been defined in the Python script, representing the height of some baseball players in centimeters. Can you add some code here and there to create a Numpy array from it?
+###Instructions
+Import the numpy package as np, so that you can refer to numpy with np.
+Use np.array() to create a Numpy array from baseball. Name this array np_baseball.
+Print out the type of np_baseball to check that you got it right.
+
+###Sloution
+```
+# Create list baseball 
+baseball = [180, 215, 210, 210, 188, 176, 209, 200]
+
+# Import the numpy package as np
+import numpy as np
+
+# Create a Numpy array from baseball: np_baseball
+np_baseball = np.array(baseball)
+
+# Print out type of np_baseball
+print(type(np_baseball))
+
+<script.py> output:
+    <class 'numpy.ndarray'>
+
+```
+
+
 ##Baseball players' height
 ##Baseball players' BMI
 ##Lightweight baseball players
