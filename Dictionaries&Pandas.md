@@ -86,9 +86,71 @@ print(europe['norway'])
     dict_keys(['france', 'germany', 'spain', 'norway'])
     oslo
 ```
-
 ##Dictionaries,Part2
+###Recap
+```
+world = {"afghanistan":30.55, "albania":2.77, "algeria":39.21}
+world["albania"]
+2.77
+world = {"afghanistan":30.55, "albania":2.77, "algeria":39.21, "albania":2.81}
+world
+{'afghanistan':30.55, 'albania':2.81, 'algeria':39.21}
+#keys have to be "immutable" objects
+{0:"hello", True:"dear", "two":"world"}
+{0:'hello', True:'dear', 'two':'world'}
+{["just","to","test"]:"value"}
+TypeError: unhashable type: 'list'
+```
+###Prinicipality of Sealand
+###Dictionary
+```
+world["sealand"] = 0.000027
+world
+{'afghanistan': 30.55, 'albania': 2.81, 'algeria': 39.21, 'sealand': 2.7e-05}
+
+"sealand" in world
+True
+world["sealand"] = 0.000028
+world
+{'afghanistan': 30.55, 'albania': 2.81, 'algeria': 39.21, 'sealand': 2.8e-05}
+del(world["sealand"])
+{'afghanistan': 30.55, 'albania': 2.81, 'algeria': 39.21}
+```
+###List vs Dictionary
+List: Select, update and remove:[]
+Indexed by range of numbers
+Collection of values order matters select entire subsets
+Dictionary:Select, update and remove:[]
+Indexed by unique keys
+Lookup table with unique keys
 ##Dictionary Manipulation(1)
+If you know how to access a dictionary, you can also assign a new value to it. To add a new key-value pair to europe you can use something like this:
+```
+europe['iceland'] = 'reykjavik'
+```
+###Instructions
+Add the key 'italy' with the value 'rome' to europe.
+To assert that 'italy' is now a key in europe, print out 'italy' in europe.
+Add another key:value pair to europe: 'poland' is the key, 'warsaw' is the corresponding value.
+Print out europe.
+###Solution
+```
+# Definition of dictionary
+europe = {'spain':'madrid', 'france':'paris', 'germany':'berlin', 'norway':'oslo' }
+
+# Add italy to europe
+europe["italy"] = 'rome'
+
+# Print out italy in europe
+print("italy" in europe)
+
+
+# Add poland to europe
+europe["poland"] = 'warsaw'
+
+# Print europe
+print(europe)
+```
 ##Dictionary Manipulation(2)
 ##Dictionariception
 ##Pandas,Part1
