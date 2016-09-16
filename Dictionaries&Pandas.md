@@ -356,14 +356,388 @@ print(cars)
     EG             45          Egypt         True
 
 ```
-
-
-
 ##CSV to DataFrame(1)
+Putting data in a dictionary and then building a DataFrame works, but it's not very efficient. What if you're dealing with millions of observations? In those cases, the data is typically available as files with a regular structure. One of those file types is the CSV file, which is short for "comma-separated values".
+
+To import CSV data into Python as a Pandas DataFrame you can use read_csv().
+
+Let's explore this function with the same cars data from the previous exercises. This time, however, the data is available in a CSV file, named cars.csv. It is available in your current working directory, so the path to the file is simply 'cars.csv'.
+###Instructions
+To import CSV files you still need the pandas package: import it as pd.
+Use pd.read_csv() to import cars.csv data as a DataFrame. Store this dataframe as cars.
+Print out cars. Does everything look OK?
+###Solution
+```
+# Import pandas as pd
+import pandas as pd
+
+# Import the cars.csv data: cars
+cars = pd.read_csv("cars.csv")
+
+# Print out cars
+print(cars)
+
+<script.py> output:
+      Unnamed: 0  cars_per_cap        country drives_right
+    0         US           809  United States         True
+    1        AUS           731      Australia        False
+    2        JAP           588          Japan        False
+    3         IN            18          India        False
+    4         RU           200         Russia         True
+    5        MOR            70        Morocco         True
+    6         EG            45          Egypt         True
+
+```
 ##CSV to DataFrame(2)
+Your read_csv() call to import the CSV data didn't generate an error, but the output is not entirely what we wanted. The row labels were imported as another column without a name.
+
+Remember index_col, an argument of read_csv(), that you can use to specify which column in the CSV file should be used as a row label? Well, that's exactly what you need here!
+
+Python code that solves the previous exercise is already included; can you make the appropriate changes to fix the data import?
+###Instructions
+Run the code with Submit Answer and assert that the first column should actually be used as row labels.
+Specify the index_col argument inside pd.read_csv(): set it to 0, so that the first column is used as row labels.
+Has the printout of cars improved now?
+###Solutions
+```
+# Import pandas as pd
+import pandas as pd
+
+# Fix import by including index_col
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out cars
+print(cars)
+<script.py> output:
+         cars_per_cap        country drives_right
+    US            809  United States         True
+    AUS           731      Australia        False
+    JAP           588          Japan        False
+    IN             18          India        False
+    RU            200         Russia         True
+    MOR            70        Morocco         True
+    EG             45          Egypt         True
+```
 ##Pandas,Part2
+###brics
+```
+import pandas as pd
+brics = pd.read_csv("path/to/brics.csv", index_col = 0)
+brics
+
+```
+###Index and Select Data
+Square brackets
+Advance methods
+loc
+iloc
+###Column Access []
+```
+brics["country"]
+Brazil
+Russia
+..
+South Africa
+Name: country, dtype: object
+type(brics["country"])
+pandas.core.series.Series
+Series --> 1D labelled array
+```
+###Column Access []
+```
+brics[["country"]]
+type(brics[["country"]])
+pandas.core.frame.DataFrame
+```
+###Column Access []
+brics["country", "capital"]
+###Row Access []
+```
+brics[1:4]
+--> first to forth rows
+```
+### Discussion []
+Square brackets: limited functionality
+Ideally
+2D Numpy arrays
+my_array[rows, columns]
+Pandas
+loc(label-based)
+iloc(integer position-base)
+###Row Access loc
+```
+brics.loc[RU"]
+country Russia
+capital Moscow
+area 17.1
+population 143.6
+Name: RU, dtye: object
+#Row as Pandas Series
+brics.loc[["RU"]]
+--> dataframe
+brics.loc[["RU","IN","CH"]
+```
+###Row&Column loc
+```
+brics.loc[["RU", "IN", "CH"],["country", "capital"]]
+brics.loc[:, ["country", "capital"]]
+: --> from beginning to the end
+```
+###Recap
+Square brackets
+Column access 
+--> brics[["country", "capital"]]
+Row access: only through slicing
+--> brics[1:4]
+loc(label-based)
+Column access
+--> brics.loc[:,["country", "capital"]]
+Row&Column access
+--> brics.loc[["RU", "IN", "CH"], ["country", "capital"]]
+###Row Access iloc
+```
+brics.loc[["RU"]]
+   country capital ...
+RU Russia  ...
+
+brics.iloc[[1]] 
+   country capital ...
+RU Russia  Moscow  ...
+
+brics.loc[["RU", "IN", "CH"]]
+brics.iloc[[1, 2, 3]]
+==> the same result
+```
+### Row & Column iloc
+```
+brics.loc[["RU", "IN", "CH"], ["country", "capital"]]
+brics.iloc[[1, 2, 3], [0, 1]]
+
+brics.loc[:, ["country", "capital"]]
+brics.iloc[:, [0,1]]
+
+loc and iloc is similar, the only different is how to refer row and column
+```
 ##Square Brackets(1)
+In the video, you saw that you can index and select Pandas DataFrames in many different ways. The simplest, but not the most powerful way, is to use square brackets.
+
+In the sample code on the right, the same cars data is imported from a CSV files as a Pandas DataFrame. To select only the cars_per_cap column from cars, you can use:
+```
+cars['cars_per_cap']
+cars[['cars_per_cap']] 
+```
+The single bracket version gives a Pandas Series, the double bracket version gives a Pandas DataFrame.
+###Instructions
+Use single square brackets to print out the country column of cars as a Pandas Series.
+Use double square brackets to print out the country column of cars as a Pandas DataFrame.
+Use double square brackets to print out a DataFrame with both the country and drives_right columns of cars, in this order.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out country column as Pandas Series
+print(cars['country'])
+
+# Print out country column as Pandas DataFrame
+print(cars[["country"]])
+
+# Print out DataFrame with country and drives_right columns
+print(cars[["country", "drives_right"]])
+
+<script.py> output:
+    US     United States
+    AUS        Australia
+    JAP            Japan
+    IN             India
+    RU            Russia
+    MOR          Morocco
+    EG             Egypt
+    Name: country, dtype: object
+               country
+    US   United States
+    AUS      Australia
+    JAP          Japan
+    IN           India
+    RU          Russia
+    MOR        Morocco
+    EG           Egypt
+               country drives_right
+    US   United States         True
+    AUS      Australia        False
+    JAP          Japan        False
+    IN           India        False
+    RU          Russia         True
+    MOR        Morocco         True
+    EG           Egypt         True
+    
+```
 ##Square Brackets(2)
+Square brackets can do more than just selecting columns. You can also use them to get rows, or observations, from a DataFrame. The following call selects the first five rows from the cars DataFrame:
+```
+cars[0:5]
+```
+The result is another DataFrame containing only the rows you specified.
+
+Pay attention: You can only select rows using square brackets if you specify a slice, like 0:4. Also, you're using the integer indexes of the rows here, not the row labels!
+###Instructions
+Select the first 3 observations from cars and print them out.
+Select the fourth, fifth and sixth obseration, corresponding to row indexes 3, 4 and 5, and print them out.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out first 3 observations
+print(cars[0:3])
+
+# Print out fourth, fifth and sixth observation
+print(cars[3:6])
+
+<script.py> output:
+         cars_per_cap        country drives_right
+    US            809  United States         True
+    AUS           731      Australia        False
+    JAP           588          Japan        False
+         cars_per_cap  country drives_right
+    IN             18    India        False
+    RU            200   Russia         True
+    MOR            70  Morocco         True
+```
 ##loc and iloc(1)
+With loc and iloc you can do practically any data selection operation on DataFrames you can think of. loc is label-based, which means that you have to specify rows and columns based on their row and column labels. iloc is integer index based, so you have to specify rows and columns by their integer index like you did in the previous exercise.
+
+Try out the following commands in the IPython Shell to experiment with loc and iloc to select observations. Each pair of commands here gives the same result.
+```
+cars.loc['RU']
+cars.iloc[4]
+
+cars.loc[['RU']]
+cars.iloc[[4]]
+
+cars.loc[['RU', 'AUS']]
+cars.iloc[[4, 1]]
+```
+As before, code is included that imports the cars data as a Pandas DataFrame.
+###Instructions
+Use loc or iloc to select the observation corresponding to Japan as a Series. The label of this row is JAP, the index is 2. Make sure to print the resulting Series.
+Use loc or iloc to select the observations for Australia and Egypt as a DataFrame. You can find out about the labels/indexes of these rows by inspecting cars in the IPython Shell. Make sure to print the resulting DataFrame.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out observation for Japan
+print(cars.loc['JAP'])
+print(cars.iloc[2])
+
+# Print out observations for Australia and Egypt
+print(cars.loc[['AUS', 'EG']])
+print(cars.iloc[[1, 6]])
+
+<script.py> output:
+    cars_per_cap      588
+    country         Japan
+    drives_right    False
+    Name: JAP, dtype: object
+    cars_per_cap      588
+    country         Japan
+    drives_right    False
+    Name: JAP, dtype: object
+         cars_per_cap    country drives_right
+    AUS           731  Australia        False
+    EG             45      Egypt         True
+         cars_per_cap    country drives_right
+    AUS           731  Australia        False
+    EG             45      Egypt         True
+
+```
 ##loc and iloc(2)
+loc and iloc also allow you to select both rows and columns from a DataFrame. To experiment, try out the following commands in the IPython Shell. Again, paired commands produce the same result.
+```
+cars.loc['IN', 'cars_per_cap']
+cars.iloc[3, 0]
+
+cars.loc[['IN', 'RU'], 'cars_per_cap']
+cars.iloc[[3, 4], 0]
+
+cars.loc[['IN', 'RU'], ['cars_per_cap', 'country']]
+cars.iloc[[3, 4], [0, 1]]
+```
+###Instructions
+Print out the drives_right value of the row corresponding to Morocco (its row label is MOR)
+Print out a sub-DataFrame, containing the observations for Russia and Morocco and the columns country and drives_right.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out drives_right value of Morocco
+print(cars.loc['MOR']['drives_right'])
+
+# Print sub-DataFrame
+print(cars.loc[['RU', 'MOR'], ['country', 'drives_right']])
+
+<script.py> output:
+    True
+         country drives_right
+    RU    Russia         True
+    MOR  Morocco         True
+```
 ##loc and iloc(3)
+It's also possible to select only columns with loc and iloc. In both cases, you simply put a slice going from beginning to end in front of the comma:
+```
+cars.loc[:, 'country']
+cars.iloc[:, 1]
+
+cars.loc[:, ['country','drives_right']]
+cars.iloc[:, [1, 2]]
+```
+###Instructions
+Print out the drives_right column as a Series using loc or iloc.
+Print out the drives_right column as a DataFrame using loc or iloc.
+Print out both the cars_per_cap and drives_right column as a DataFrame using loc or iloc.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Print out drives_right column as Series
+print(cars.loc[:,'drives_right'])
+
+# Print out drives_right column as DataFrame
+print(cars.loc[:,['drives_right']])
+
+# Print out cars_per_cap and drives_right as DataFrame
+print(cars.loc[:,['cars_per_cap', 'drives_right']])
+<script.py> output:
+    US      True
+    AUS    False
+    JAP    False
+    IN     False
+    RU      True
+    MOR     True
+    EG      True
+    Name: drives_right, dtype: bool
+        drives_right
+    US          True
+    AUS        False
+    JAP        False
+    IN         False
+    RU          True
+    MOR         True
+    EG          True
+         cars_per_cap drives_right
+    US            809         True
+    AUS           731        False
+    JAP           588        False
+    IN             18        False
+    RU            200         True
+    MOR            70         True
+    EG             45         True
+```
