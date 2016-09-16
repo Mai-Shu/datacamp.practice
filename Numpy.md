@@ -222,6 +222,23 @@ print(bmi[bmi < 21])
 ```
 
 ##Numpy side effects
+As Filip explained before, Numpy is great to do vector arithmetic. If you compare its functionality with regular Python lists, however, some things have changed.
+
+First of all, Numpy arrays cannot contain elements with different types. If you try to build such a list, some of the elments' types are changed to end up with a homogenous list. This is known as type coercion.
+
+Second, the typical arithmetic operators, such as +, -, * and / have a different meaning for regular Python lists and Numpy arrays.
+
+Have a look at this line of code:
+```
+np.array([True, 1, 2]) + np.array([3, 4, False])
+```
+Can you tell which code chunk builds the exact same Python object? The Numpy package is already imported as np, so you can start experimenting in the IPython Shell straight away!
+###Solution
+A np.array([True, 1, 2, 3, 4, False]) 1
+B np.array([4, 3, 0]) + np.array([0, 2, 2]) 2
+C np.array([1, 1, 2]) + np.array([3, 4, -1]) 3
+D np.array([0, 1, 2, 3, 4, 5])
+Ans:B
 ##Subsetting Numpy Arrays
 ##2D Numpy Arrays
 ##Your first 2D Numpy Arrays
