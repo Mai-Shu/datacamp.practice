@@ -279,6 +279,51 @@ print(np_height[100:111])
     [73 74 72 73 69 72 73 75 75 73 72]
 ```
 ##2D Numpy Arrays
+###Type of Numpy Arrays
+```
+import numpy as np
+np_height = np.array([1.73, 1.68, 1.71, 1.89, 1.79])
+np_weight = np.array([65.4, 59.2, 63.6, 88.4, 68.7])
+type(np_height)
+numpy.ndarray
+type(np_weight)
+numpy.ndarray
+```
+ndarray = N-dimensional array
+###2D Numpy Arrays
+```
+np_2d = np.array([[1.73, 1.68, 1.71, 1.89, 1.79],
+[65.4, 59.2, 63.6, 88.4, 68.7])
+np_2d
+array([[1.73, 1.68, 1.71, 1.89, 1.79],
+[65.4, 59.2, 63.6, 88.4, 68.7]])
+np_2d.shape
+(2,5)
+#2 rows, 5 coulmns
+np.array([[1.73, 1.68, 1.71, 1.89, 1.79],
+[65.4, 59.2, 63.6, 88.4, "68.7"]])
+
+array([['1.73', '1.68', '1.71', '1.89', '1.79'],
+['65.4', '59.2', '63.6', '88.4', '68.7']], dtype='<U32')
+#Single type!
+```
+###Subsetting
+```
+np_2d[0]
+array([1.73, 1.68, 1.71, 1.89, 1.79])
+
+np_d2[0][2]
+1.71
+
+np_2d[0,2]
+1.71
+
+np_2d[:,1:3]
+array([[1.68, 1.71], [59.2, 63.6]])
+np_2d[1,:]
+array([65.4, 59.2, 63.6, 88.4, 68.7])
+```
+
 ##Your first 2D Numpy Arrays
 ##Baseball data in 2D form
 ##Subsetting 2D Numpy Arrays
