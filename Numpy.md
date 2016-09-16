@@ -194,6 +194,7 @@ The code that calculates the BMI of all baseball players is already included. Fo
 Create a boolean Numpy array: the element of the array should be True if the corresponding baseball player's BMI is below 21. You can use the < operator for this. Name the array light.
 Print the array light.
 Print out a Numpy array with the BMIs of all baseball players whose BMI is below 21. Use light inside square brackets to do a selection on the bmi array.
+###Solution
 ```
 # height and weight are available as a regular lists
 
