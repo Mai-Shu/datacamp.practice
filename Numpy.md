@@ -234,10 +234,14 @@ np.array([True, 1, 2]) + np.array([3, 4, False])
 ```
 Can you tell which code chunk builds the exact same Python object? The Numpy package is already imported as np, so you can start experimenting in the IPython Shell straight away!
 ###Solution
-A np.array([True, 1, 2, 3, 4, False]) 1
-B np.array([4, 3, 0]) + np.array([0, 2, 2]) 2
-C np.array([1, 1, 2]) + np.array([3, 4, -1]) 3
+A np.array([True, 1, 2, 3, 4, False]) 
+
+B np.array([4, 3, 0]) + np.array([0, 2, 2]) 
+
+C np.array([1, 1, 2]) + np.array([3, 4, -1]) 
+
 D np.array([0, 1, 2, 3, 4, 5])
+
 Ans:B
 ##Subsetting Numpy Arrays
 ##2D Numpy Arrays
