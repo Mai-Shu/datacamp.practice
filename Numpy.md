@@ -273,6 +273,10 @@ print(np_weight[50])
 # Print out sub-array of np_height: index 100 up to and including index 110
 print(np_height[100:111])
 
+
+<script.py> output:
+    200
+    [73 74 72 73 69 72 73 75 75 73 72]
 ```
 ##2D Numpy Arrays
 ##Your first 2D Numpy Arrays
