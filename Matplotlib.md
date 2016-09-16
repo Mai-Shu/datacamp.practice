@@ -44,8 +44,6 @@ Use plt.plot() to build a line plot. year should be mapped on the horizontal axi
 print(year[-1])
 print(pop[-1])
 
-
-
 # Import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 
@@ -56,8 +54,61 @@ plt.show()
 
 
 ##Line plot(2):Interpretation
+Have another look at the plot you created in the previous exercise; it's shown on the right. What is the first year in which there will be more than ten billion human beings on this planet?
+Ans: 2062
 ##Line plot(3)
+Now that you've built your first line plot, let's start working on the data that professor Hans Rosling used to build his beautiful bubble chart. It was collected in 2007. Two lists are available for you:
+
+life_exp which contains the life expectancy for each country and
+gdp_cap, which contains the GDP per capita, for each country expressed in US Dollar.
+GDP stands for Gross Domestic Product. It basically represents the size of the economy of a country. Divide this by the population and you get the GDP per capita.
+
+matplotlib.pyplot is already imported as plt, so you can get started straight away.
+###Instructions
+Print the last item from both the list gdp_cap, and the list life_exp; it is information about Zimbabwe.
+Build a line chart, with gdp_cap on the x-axis, and life_exp on the y-axis. Does it make sense to plot this data on a line plot?
+Don't forget to finish off with a plt.show() command, to actually display the plot.
+###Solution
+```
+# Print the last item of gdp_cap and life_exp
+print(gdp_cap[-1])
+print(life_exp[-1])
+
+
+# Make a line plot, gdp_cap on the x-axis, life_exp on the y-axis
+import matplotlib.pyplot as plt
+plt.plot(gdp_cap, life_exp)
+
+# Display the plot
+plt.show()
+```
 ##Scatter Plot(1)
+When you have a time scale along the horizontal axis, the line plot is your friend. But in many other cases, when you're trying to assess if there's a correlation between two variables, for example, the scatter plot is the better choice. Below is an example of how to build a scatter plot.
+```
+import matplotlib.pyplot as plt
+plt.scatter(x,y)
+plt.show()
+```
+Let's continue with the gdp_cap versus life_exp plot, the GDP and life expectancy data for different countries in 2007. Maybe a scatter plot will be a better alternative?
+
+Again, the matploblib.pyplot package is available as plt.
+###Instructions
+Change the line plot that's coded in the script to a scatter plot.
+A correlation will become clear when you display the GDP per capita on a logarithmic scale. Add the line plt.xscale('log').
+Finish off your script with plt.show() to display the plot.
+###Solution
+```
+# Change the line plot below to a scatter plot
+plt.scatter(gdp_cap, life_exp)
+
+# Put the x-axis on a logarithmic scale
+plt.xscale('log')
+
+# Show plot
+plt.show()
+```
+https://s3.amazonaws.com/markdown-uploads.datacamp.com/2cb420cb7573d5dcc8cdce022d7bd44c465ee46268a0631e7b673ae569b85fef/14739954381207figure.svg
+
 ##Scatter Plot(2)
 ##Histograms
 ##Build a histogram(1)
