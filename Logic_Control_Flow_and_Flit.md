@@ -1,2 +1,20 @@
 #Logic,Control Flow and Filt
+##Comparison Operators
+##Equality
+##Greater and less than
+##Compare arrays
+##Boolean Operators
+##and, or, not(1)
+##and, or, not(2)
+##Boolean operators with Numpy
+##if, elif, else
+##Warmup
+##if
+##Add else
+##Customize further:elif
+##Filtering Pandas DataFrame
+##Driving right(1)
+##Driving right(2)
+##Cars per capita(1)
+##Cars per capita(2)
 
