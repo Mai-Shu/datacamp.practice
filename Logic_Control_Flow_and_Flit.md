@@ -501,7 +501,7 @@ import numpy as np
 np.logical_and(brics["area"] > 8, brics["area"] < 10)
 Name: area, dtype: bool
 bricks[np.logical_and(brics["area"] > 8, brics["area"] < 10)]
-#list items
+!!list items
 ```
 
 ##Driving right(1)
