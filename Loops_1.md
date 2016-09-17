@@ -346,7 +346,7 @@ for k, v in world.items():
 algeria -- 39.21
 afhanistan -- 30.55
 albania -- 2.77
-```
+
 ###Numpy Arrays
 ```
 import numpy as np
@@ -453,14 +453,14 @@ Write a for loop that iterates over all elements in np_height and prints out "x 
 Write a for loop that visits every element of the np_baseball array and prints it out.
 ###Solution
 ```
-# Import numpy as np
+Import numpy as np
 import numpy as np
 
-# For loop over np_height
+For loop over np_height
 for value in np_height:
     print(str(value) + " inches")
 
-# For loop over np_baseball
+For loop over np_baseball
 for element in np.nditer(np_baseball):
     print(element)
     
@@ -644,17 +644,18 @@ Using iterrows() to iterate over every observation of a Pandas DataFrame is easy
 If you want to add a column to a DataFrame by calling a function on another column, the iterrows() method in combination with a for loop is not the preferred way to go. Instead, you'll want to use apply().
 
 Compare the iterrows() version with the apply() version to get the same result in the brics DataFrame:
-```
+
 for lab, row in brics.iterrows() :
     brics.loc[lab, "name_length"] = len(row["country"])
 
 brics["name_length"] = presidents["country"].apply(len)
-```
+
 We can do a similar thing to call the upper() method on every name in the country column. However, upper() is a method, so we'll need a slightly different approach:
 
 ###Instructions
 Replace the for loop with a one-liner that uses .apply(str.upper). The call should give the same result: a column COUNTRY should be added to cars, containing an uppercase version of the country names.
 As usual, print out cars to see the fruits of your hard labor
+
 ###Solution
 ```
 # Import cars data
