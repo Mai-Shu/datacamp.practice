@@ -505,6 +505,121 @@ bricks[np.logical_and(brics["area"] > 8, brics["area"] < 10)]
 ```
 
 ##Driving right(1)
+Remember that cars dataset, containing the cars per 1000 people (cars_per_cap) and whether people drive right (drives_right) for different countries (country)? The code that imports this data in CSV format into Python as a DataFrame is available on the right.
+
+In the video, you saw a step-by-step approach to filter observations from a DataFrame based on boolean arrays. Let's start simple and try to find all observations in cars where drives_right is True.
+
+drives_right is a boolean column, so you'll have to extract it as a Series and then use this boolean Series to select observations from cars.
+
+###Instructions
+Extract the drives_right column as a Pandas Series and store it as dr.
+Use dr, a boolean Series, to subset the cars DataFrame. Store the resulting selection in sel.
+Print sel, and assert that drives_right is True for all observations.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Extract drives_right column as Series: dr
+dr = cars['drives_right']
+
+# Use dr to subset cars: sel
+sel = cars[dr]
+
+# Print sel
+print(sel)
+
+<script.py> output:
+         cars_per_cap        country drives_right
+    US            809  United States         True
+    RU            200         Russia         True
+    MOR            70        Morocco         True
+    EG             45          Egypt         True
+```
 ##Driving right(2)
+The code in the previous example worked fine, but you actually unnecessarily created a new variable dr. You can achieve the same result without this intermediate variable. Put the code that computes dr straight into the square brackets that select observations from cars.
+###Instructions
+Convert the code on the right to a one-liner that calculates the variable sel as before.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Convert code to a one-liner
+
+sel = cars[cars['drives_right']]
+
+# Print sel
+print(sel)
+<script.py> output:
+         cars_per_cap        country drives_right
+    US            809  United States         True
+    RU            200         Russia         True
+    MOR            70        Morocco         True
+    EG             45          Egypt         True
+```
 ##Cars per capita(1)
+Let's stick to the cars data some more. This time you want to find out which countries have a high cars per capita figure. In other words, in which countries do many people have a car, or maybe multiple cars.
+
+Similar to the previous example, you'll want to build up a boolean Series, that you can then use to subset the cars DataFrame to select certain observations. If you want to do this in a one-liner, that's perfectly fine!
+###Instructions
+Select the cars_per_cap column from cars as a Pandas Series and store it as cpc.
+Use cpc in combination with a comparison operator and 500. You want to end up with a boolean Series that's True if the corresponding country has a cars_per_cap of more than 500 and False otherwise. Store this boolean Series as many_cars.
+Use many_cars to subset cars, similar to what you did before. Store the result as car_maniac.
+Print out car_maniac to see if you got it right.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Create car_maniac: observations that have a cars_per_cap over 500
+
+cpc = cars['cars_per_cap']
+many_cars = cpc > 500
+car_maniac = cars[many_cars]
+# Print car_maniac
+
+print(car_maniac)
+
+<script.py> output:
+         cars_per_cap        country drives_right
+    US            809  United States         True
+    AUS           731      Australia        False
+    JAP           588          Japan        False
+```
 ##Cars per capita(2)
+
+Remember about np.logical_and(), np.logical_or() and np.logical_not(), the Numpy variants of the and, or and not operators? You can also use them on Pandas Series to do more advanced filtering operations.
+
+Take this example that selects the observations that have a cars_per_cap between 10 and 80. Try out these lines of code step by step to see what's happening.
+```
+cpc = cars['cars_per_cap']
+between = np.logical_and(cpc > 10, cpc < 80)
+medium = cars[between]
+```
+###Instructions
+Use the code sample above to create a DataFrame medium, that includes all the observations of cars that have a cars_per_cap between 100 and 500.
+Print out medium.
+###Solution
+```
+# Import cars data
+import pandas as pd
+cars = pd.read_csv('cars.csv', index_col = 0)
+
+# Import numpy, you'll need this
+import numpy as np
+
+# Create medium: observations with cars_per_cap between 100 and 500
+cpc = cars['cars_per_cap']
+between = np.logical_and(cpc > 100, cpc < 500)
+medium = cars[between]
+
+# Print medium
+print(medium)
+<script.py> output:
+        cars_per_cap country drives_right
+    RU           200  Russia         True
+```
