@@ -488,7 +488,7 @@ Step3. Subset DF
 is_huge = brics["area"] > 8
 Name: area, dtype: bool
 brics[is_huge]
-#list content
+!!!list content
 ###Summary
 ```
 is_huge = brics["area"] > 8
