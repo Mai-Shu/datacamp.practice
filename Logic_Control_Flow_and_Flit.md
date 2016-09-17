@@ -484,10 +484,6 @@ Name: area, dtype: float64
 Step2. Compare
 ex. brics["area"]
 Name: area, dtype: bool
-##Driving right(1)
-##Driving right(2)
-##Cars per capita(1)
-##Cars per capita(2)
 Step3. Subset DF
 is_huge = brics["area"] > 8
 Name: area, dtype: bool
@@ -507,3 +503,8 @@ Name: area, dtype: bool
 bricks[np.logical_and(brics["area"] > 8, brics["area"] < 10)]
 #list items
 ```
+
+##Driving right(1)
+##Driving right(2)
+##Cars per capita(1)
+##Cars per capita(2)
